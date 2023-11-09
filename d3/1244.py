@@ -98,7 +98,7 @@
 #     num_list = []
 #     for num in number:
 #         num_list.append(num)  # 리스트를 통해서 값 분리
-#     num_length = len(number)  # 반복을 위해 구해야 함
+#     num_length = len(num_list)  # 반복을 위해 구해야 함
 #     #print(num_length)
 #
 #     print(type(num))
@@ -110,7 +110,38 @@
 #
 #
 
+def dfs(time):
+    global result
+    if time == end:
+        result = max(result, int("".join(num_graph)))
+        return
 
+    for i in range(iter_value-1):
+        for j in range(i+1, iter_value):
+            num_graph[i], num_graph[j] = num_graph[j], num_graph[i]
+            visited_num = int("".join(num_graph))
+
+            if (time, visited_num) not in visit_checker:
+                dfs(time+1)
+                visit_checker.append((time, visited_num))
+            num_graph[i], num_graph[j] = num_graph[j], num_graph[i]
+
+
+T = int(input())
+for test_case in range(1,T+1):
+    # 특정 타이밍 마다 원상복구 시켜야 함
+    num_info, change_info = input().split()
+    end = int(change_info)
+    num_graph = []
+    for num in num_info:
+        num_graph.append(num)
+
+    iter_value = len(num_graph)
+    visit_checker = []
+
+    result = 0
+    dfs(0)
+    print("#{} {}".format(test_case, result))
 
 
 
