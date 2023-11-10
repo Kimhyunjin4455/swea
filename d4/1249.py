@@ -3,11 +3,11 @@ from collections import deque
 T = int(input())
 for test_case in range(1,T+1):
     size = int(input())
-    # area = []
-    #
-    # for i in range(size):
-    #     area.append(list(map(int, input().split())))
-    area = [list(map(int, list(input()))) for _ in range(size)]
+    area = []
+
+    for i in range(size):
+        area.append(list(map(int, list(input()))))
+    # area = [list(map(int, list(input()))) for _ in range(size)]
     visit = [[1000000] * size for i in range(size)]  # 방문 리스트 생성
     dx = [0, 0, -1, 1] # 상하좌우
     dy = [-1, 1, 0 ,0]
