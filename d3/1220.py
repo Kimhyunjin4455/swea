@@ -38,9 +38,21 @@
 #
 # Re
 
+T = 10
+for test_case in range(1, T+1):
+    size = int(input())
+    area = [list(map(int, input().split())) for _ in range(size)]
 
-
-
+    result = 0
+    for column in range(size):
+        isN = 0  # 교착되지 않은 상태, 행이 바뀔때마다 초기화 필요.
+        for row in range(size):
+            if area[row][column] == 1: # N극의 자석을 발견
+                isN = 1
+            if area[row][column] == 2 and isN == 1: #S극의 자석을 발견(교착상태가 이루어짐)
+                result += 1
+                isN = 0 # 그 열에서 새로운 교착 상태를 다시 판단하기 위해 0으로 갱신
+    print("#{} {}".format(test_case, result))
 
 
 
