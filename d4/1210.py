@@ -23,34 +23,75 @@
 #     print("#{} {}".format(test_case, end_column))
 
 # 위에서 아래로
+# T = 10
+# for test_case in range(1, T+1):
+#     n = int(input())
+#     area = [list(map(int, input().split())) for i in range(100)]
+#
+#     dr = [1,0,0] # 아래, 오른쪽, 왼쪽
+#     dc = [0,1,-1]
+#
+#     result = 0
+#     for i in range(100):
+#         if area[0][i]: # 시작점 찾기
+#             row, column = 0,i
+#             d = 0
+#             while row < 99:
+#                 if d == 0:
+#                     if column > 0 and area[row][column-1]: # 왼쪽으로 갈 수 있을 때 'area[row][column-1]'값이 1
+#                         d = 2
+#                     elif column < 99 and area[row][column+1]:
+#                         d = 1
+#                 else:
+#                     if area[row+1][column]:
+#                         d = 0
+#                 row += dr[d]
+#                 column += dc[d]
+#             if area[row][column] == 2:
+#                 result = i
+#                 break
+#     print("#{} {}".format(test_case, result))
+#
+
+#RE
+
 T = 10
 for test_case in range(1, T+1):
     n = int(input())
-    area = [list(map(int, input().split())) for i in range(100)]
 
-    dr = [1,0,0] # 아래, 오른쪽, 왼쪽
-    dc = [0,1,-1]
+    size = 100
+    area = [list(map(int, input().split())) for _ in range(size)]
 
-    result = 0
-    for i in range(100):
-        if area[0][i]: # 시작점 찾기
-            row, column = 0,i
-            d = 0
-            while row < 99:
-                if d == 0:
-                    if column > 0 and area[row][column-1]: # 왼쪽으로 갈 수 있을 때 'area[row][column-1]'값이 1
-                        d = 2
-                    elif column < 99 and area[row][column+1]:
-                        d = 1
-                else:
-                    if area[row+1][column]:
-                        d = 0
-                row += dr[d]
-                column += dc[d]
-            if area[row][column] == 2:
-                result = i
-                break
-    print("#{} {}".format(test_case, result))
+    row = 99
+    end_column = 0
+
+    for i in range(size):
+        if area[row][i] == 2:
+            end_column = i
+
+    while row != 0:
+        if end_column-1 >= 0 and area[row][end_column-1]:
+            while end_column - 1 >= 0 and area[row][end_column-1]:
+                end_column -= 1
+            row -= 1
+        elif end_column+1 <= 99 and area[row][end_column+1]:
+            while end_column + 1 <= 99 and area[row][end_column+1]:
+                end_column += 1
+            row -= 1
+        else:
+            row -= 1
+
+    print("#{} {}".format(test_case, end_column))
 
 
-#RE
+
+
+
+
+
+
+
+
+
+
+
