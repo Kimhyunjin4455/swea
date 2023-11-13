@@ -10,7 +10,7 @@
 #             end_column = j # 마지막 행의 도착지점을 찾음, end_column은 99
 #
 #     while end_row != 0:
-#         if 0 <= end_column+1 <= 99 and area[end_row][end_column+1]: # 오른쪽이 1이면 오른쪽에 0이 나올 때까지 위로 한 칸 이동
+#         if 0 <= end_column+1 < 99 and area[end_row][end_column+1]: # 오른쪽이 1이면 오른쪽에 0이 나올 때까지 위로 한 칸 이동
 #             while end_column + 1 <= 99 and area[end_row][end_column+1]:
 #                 end_column +=1
 #             end_row -=1 # 위로 이동하기에 row값 감소
