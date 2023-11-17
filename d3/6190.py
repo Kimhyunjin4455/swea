@@ -5,7 +5,7 @@
 # 1 ≤ i < j ≤ N 인 두 i, j에 대해, Ai x Aj값이 단조 증가하는 수인 것들을 구하고 그 중의 최댓값을 출력
 T = int(input())
 def check(value):
-    value= str(value)
+    value = str(value)
     for i in range(len(value)-1):
         if value[i] > value[i+1]:
             return False

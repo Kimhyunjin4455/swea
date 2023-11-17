@@ -55,33 +55,62 @@
 
 #RE
 
-T = 10
-for test_case in range(1, T+1):
-    n = int(input())
+# T = 10
+# for test_case in range(1, T+1):
+#     n = int(input())
+#
+#     size = 100
+#     area = [list(map(int, input().split())) for _ in range(size)]
+#
+#     row = 99
+#     end_column = 0
+#
+#     for i in range(size):
+#         if area[row][i] == 2:
+#             end_column = i
+#
+#     while row != 0:
+#         if end_column-1 >= 0 and area[row][end_column-1]:
+#             while end_column - 1 >= 0 and area[row][end_column-1]:
+#                 end_column -= 1
+#             row -= 1
+#         elif end_column+1 <= 99 and area[row][end_column+1]:
+#             while end_column + 1 <= 99 and area[row][end_column+1]:
+#                 end_column += 1
+#             row -= 1
+#         else:
+#             row -= 1
+#
+#     print("#{} {}".format(test_case, end_column))
 
-    size = 100
-    area = [list(map(int, input().split())) for _ in range(size)]
+for test_case in range(10):
+    n = int(input())
+    area = [list(map(int, input().split())) for _ in range(100)]
 
     row = 99
-    end_column = 0
+    column = 0
 
-    for i in range(size):
-        if area[row][i] == 2:
-            end_column = i
+    for j in range(100): # 이 부분의 차이
+        if area[row][j] == 2:
+            column = j
 
     while row != 0:
-        if end_column-1 >= 0 and area[row][end_column-1]:
-            while end_column - 1 >= 0 and area[row][end_column-1]:
-                end_column -= 1
-            row -= 1
-        elif end_column+1 <= 99 and area[row][end_column+1]:
-            while end_column + 1 <= 99 and area[row][end_column+1]:
-                end_column += 1
-            row -= 1
+        if column-1 >= 0 and area[row][column-1] ==1:
+            while column-1 >= 0 and area[row][column-1] ==1:
+                column -= 1
+            row -=1
+
+        elif column+1 <= 99 and area[row][column+1] ==1:
+            while column+1 <= 99 and area[row][column+1]==1:
+                column +=1
+            row -=1
+
         else:
             row -= 1
 
-    print("#{} {}".format(test_case, end_column))
+
+
+    print("#{} {}".format(test_case+1, column))
 
 
 

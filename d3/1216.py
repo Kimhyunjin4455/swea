@@ -48,45 +48,46 @@
 #     print("#{} {}".format(test_case, count))
 
 # 가로(column)에서의 가장 긴 회문과 과 세로(row)에서의 가장 긴 회문 구해서 큰 값 필요
-def column_len():
-    col_cnt = 0
-    # 회문이 길이를 큰 값부터 시작해서 가장 큰 값 구해지는 순간 종료
-    for size in range(100,0,-1): # 길이가 점점 줄어들면서
-        for i in range(100):
-            for j in range(100):
-                if j + size > 100: # 회문을 검사하는 범위를 초과
-                    break
-                end = j + size -1 # 마지막 인덱스 설정
-                for half in range(j, j+(size//2)): # 절반만 반복
-                    if area[i][half] != area[i][end]:
-                        break
-                    end -= 1
-                else:
-                    col_cnt = size
-                    return col_cnt
+# def column_len():
+#     col_cnt = 0
+#     # 회문이 길이를 큰 값부터 시작해서 가장 큰 값 구해지는 순간 종료
+#     for size in range(100,0,-1): # 길이가 점점 줄어들면서
+#         for i in range(100):
+#             for j in range(100):
+#                 if j + size > 100: # 회문을 검사하는 범위를 초과
+#                     break
+#                 end = j + size -1 # 마지막 인덱스 설정
+#                 for half in range(j, j+(size//2)): # 절반만 반복
+#                     if area[i][half] != area[i][end]:
+#                         break
+#                     end -= 1
+#                 else:
+#                     col_cnt = size
+#                     return col_cnt
+#
+# def row_len():
+#     row_cnt = 0
+#     for size in range(100,0,-1):
+#         for i in range(100):
+#             for j in range(100):
+#                 if i + size > 100:
+#                     break
+#                 end = i + size - 1 # 각 반복에서의 마지막 인덱스 수식
+#                 for half in range(i,i+(size//2)):
+#                     if area[half][j] != area[end][j]: # 회문 조건 불만족
+#                         break
+#                     end -= 1 # 만족시 길이 줄여가면서 반복
+#                 else: # 회문 조건 달성 시
+#                     row_cnt = size
+#                     return row_cnt
+#
+#
+# T = 10
+# for test_case in range(1, T+1):
+#     n = int(input())
+#     area = [list(map(str, input())) for _ in range(100)]
+#
+#     result = max(column_len(),row_len())
+#
+#     print("#{} {}".format(test_case, result))
 
-def row_len():
-    row_cnt = 0
-    for size in range(100,0,-1):
-        for i in range(100):
-            for j in range(100):
-                if i + size > 100:
-                    break
-                end = i + size - 1 # 각 반복에서의 마지막 인덱스 수식
-                for half in range(i,i+(size//2)):
-                    if area[half][j] != area[end][j]: # 회문 조건 불만족
-                        break
-                    end -= 1 # 만족시 길이 줄여가면서 반복
-                else: # 회문 조건 달성 시
-                    row_cnt = size
-                    return row_cnt
-
-
-T = 10
-for test_case in range(1, T+1):
-    n = int(input())
-    area = [list(map(str, input())) for _ in range(100)]
-
-    result = max(column_len(),row_len())
-
-    print("#{} {}".format(test_case, result))
