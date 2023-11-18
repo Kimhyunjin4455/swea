@@ -22,7 +22,9 @@ def matrix(x,y):
         else:
             y -= 1
             break
-    for k in range(i, x+1):
+
+    for k in range(i, x+1): # i/j부터 시작점 설정해야 함, +1 해야 현재 x행/y열 까지 채울 수 있음
+        # 이 값에는 row, column (순수한 크기)말고 x,y (현재 진행에 맞는 행열의 범위)를 해야 이어지는 반복이 적용 가능
         for l in range(j, y+1):
             visited[k][l] = True
 
