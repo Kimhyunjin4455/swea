@@ -33,7 +33,7 @@ for test_case in range(1,T+1):
 
     for j in range(len(character) * 6 // 8): # 만들어진 값(글자의 길이 * 6)을 8비트 단위로 자름
         # 자른 값을 10진수로 변환
-        e = int(res[j * 8:j * 8 + 8], 2) # 8비트로 자른 값을 10진수로 변환
+        e = int(res[j * 8:j * 8 + 8], 2) # 8비트로 자른 값(2진수)을 10진수로 변환
         result += chr(e)
 
     print("#{} {}".format(test_case, result))
