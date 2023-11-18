@@ -6,8 +6,31 @@
 
 # 2<= x, y <= 10^9
 
+# T = int(input())
+# for test_case in range(1, T+1):
+#     N = int(input())
+#     x, y = N * 9, N * 8 # N*A - N*(A-1) = N(A-A+1) 이용
+#     # 자연수 N (1 <= N <= 10^7) -> 2<= x, y <= 10^9 를 만족
+#     print("#{} {} {}".format(test_case, x, y))
+#
+# n = int(input())
+
+# x - y = N은 곧 x = y + N    => y = cnt라면 x = cnt + n
+# while문을 통해 cnt, cnt + n이 isPrime인지 확인하고 아니면 출력
+def isPrime(num):
+    for i in range(2, int(num)): # 소수는 1과 자기 자신외의 수로 나눠지면 안됨
+        if num % i == 0:
+            return False
+
+    return True
+
+
 T = int(input())
-for test_case in range(1, T+1):
+for test_case in range(1,T+1):
     N = int(input())
-    num1, num2 = N * 9, N * 8 # N*A - N*(A-1) = N(A-A+1)
-    print("#{} {} {}".format(test_case, num1, num2))
+    cnt = 2 # 함수의 시작점 설정을 위해
+    while True:
+        if not isPrime(cnt) and not isPrime(cnt + N): #
+            print("#{} {} {}".format(test_case, cnt + N, cnt))
+            break
+        cnt += 1
